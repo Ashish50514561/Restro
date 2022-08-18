@@ -1,0 +1,209 @@
+#main_container {
+  color: #5d5d5d;
+  background-image: url("https://wallpaperset.com/w/full/8/8/0/462749.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 20px;
+}
+.foodItemsContainer {
+  margin: 1px;
+  display: flex;
+  justify-content: space-around;
+  overflow: auto;
+  max-height: 85vh;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+}
+.Ui_items {
+  height: 85vh;
+  padding: 2px !important;
+}
+.main_heading {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  margin-bottom: 20px;
+  color: #5d5d5d;
+  position: relative;
+  height: 7vh;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#drawer {
+  position: absolute;
+  left: 7px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 23vh;
+  object-fit: cover;
+}
+.addButton {
+  border-radius: 0.3rem;
+  width: 100%;
+  background-color: #52a7ef;
+}
+#drawerCart {
+  position: absolute;
+  right: 8px;
+  top: 12px;
+}
+.cart_sm_total {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  width: 100%;
+  border-radius: 0.2rem;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #eff0f4;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.categories {
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  padding: 8px;
+  border-radius: 0.5rem;
+  color: #5d5d5d;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.categories h7 {
+  margin-bottom: 15px;
+}
+
+.loginContainer {
+  background-image: url("https://wallpaperaccess.com/full/1586344.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.form_heading {
+  color: #aaaaaa;
+  margin-bottom: 40px;
+}
+
+.form_button {
+  border-radius: 0.5rem;
+  height: 7vh;
+  color: black;
+  background-color: #ebecf0;
+  width: 80%;
+}
+.cartItem_details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.quantity_btn {
+  border-radius: 30%;
+  background-color: #0d6efd;
+  color: white;
+}
+
+.form_button:hover {
+  background-color: #aaaaaa;
+  color: white;
+}
+.form_error {
+  color: red;
+  margin-top: 7px;
+}
+input {
+  height: 5vh !important;
+}
+.category {
+  display: none;
+}
+
+#cart_total {
+  position: absolute;
+  bottom: 0;
+  height: 10vh;
+  width: 93%;
+  display: flex;
+  border-radius: 0.2rem;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #eff0f4;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+@media (min-width: 576px) {
+  #drawerCart {
+    display: none;
+  }
+  .cart_sm_total {
+    display: none;
+  }
+  .input {
+    width: 45vw;
+  }
+  .form_heading {
+    color: #aaaaaa;
+    margin-bottom: 40px;
+    font-size: 30px;
+  }
+  input {
+    height: 5vh !important;
+  }
+  .cart_image {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .input {
+    width: 40vw;
+  }
+  .form_heading {
+    color: #aaaaaa;
+    margin-bottom: 40px;
+    font-size: 40px;
+  }
+  input {
+    height: 7vh !important;
+  }
+  .cart_image {
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  #drawer {
+    display: none;
+  }
+  .category {
+    display: block;
+  }
+  .input {
+    width: 35vw;
+  }
+  .form_heading {
+    color: #aaaaaa;
+    margin-bottom: 40px;
+    font-size: 42px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .input {
+    width: 30vw;
+  }
+}
