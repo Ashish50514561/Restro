@@ -33,21 +33,7 @@ export default function Cart(props) {
   }, []);
 
   return (
-    <div style={{ width: "100%" }}>
-      <div className="cart_heading" style={flexStyles}>
-        <h5 style={{ marginBottom: "10px" }}>Your Cart</h5>
-      </div>
-
-      {cart.length === 0 && (
-        <div style={flexStyles}>
-          <h5 style={{ marginTop: "200px" }}>Your Cart is Empty</h5>
-        </div>
-      )}
-
-      {cart.reverse().map((item) => (
-        <Cartitem {...item} />
-      ))}
-
+    <div style={{ width: "100%", position: "relative" }}>
       <div className="cart_sm_total">
         <button className="btn btn-primary btn-sm" onClick={() => navigate(-1)}>
           Go Back
@@ -61,6 +47,19 @@ export default function Cart(props) {
           Place Order
         </button>
       </div>
+      <div className="cart_heading" style={flexStyles}>
+        <h5 style={{ marginBottom: "10px" }}>Your Cart</h5>
+      </div>
+
+      {cart.length === 0 && (
+        <div style={flexStyles}>
+          <h5 style={{ marginTop: "200px" }}>Your Cart is Empty</h5>
+        </div>
+      )}
+
+      {cart.reverse().map((item) => (
+        <Cartitem {...item} />
+      ))}
     </div>
   );
 }

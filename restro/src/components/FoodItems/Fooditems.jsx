@@ -71,12 +71,12 @@ export default function Fooditems() {
         </div>
 
         <div
-          class="col-sm-6 col-md-5 col-lg-3  Ui_items g-0 "
+          class="col-sm-6 col-md-5 col-lg-3 cart  Ui_items g-0 "
           style={{
             position: "relative",
           }}
         >
-          <div className="categories" style={categoriesStyle}>
+          <div className="categories " style={categoriesStyle}>
             <Cart orderPlaced={orderPlaced} />
           </div>
 

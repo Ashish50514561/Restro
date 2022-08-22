@@ -1,3 +1,4 @@
+import swal from "sweetalert";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -21,6 +22,18 @@ export default function Card(props) {
         image: strMealThumb,
       };
       dispatch(asyncAddToCart(item));
+      swal({
+        title: "Added to cart!",
+        text: "Thank you!",
+        icon: "success",
+        button: "continue shopping!",
+      });
+    } else {
+      swal({
+        title: "Item is already in cart!",
+        icon: "warning",
+        button: "Add other item!",
+      });
     }
   };
 
