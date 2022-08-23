@@ -89,7 +89,7 @@ export default function Categories(props) {
           class="btn categories_"
           name={foods ? "French" : "Shot"}
         >
-          {foods ? "French" : "Shots"}
+          {foods ? "French" : "Shotss"}
         </button>
 
         <button
@@ -113,7 +113,7 @@ export default function Categories(props) {
           class="btn categories_"
           name={foods ? "Turkish" : "Cocoa"}
         >
-          {foods ? "Turkish" : "Cocoas"}
+          {foods ? "Turkish" : "Cocoass"}
         </button>
 
         <button
@@ -129,7 +129,7 @@ export default function Categories(props) {
           class="btn categories_"
           name={foods ? "Mexican" : "Homemade Liqueur"}
         >
-          {foods ? "Mexican" : "Liqueur"}
+          {foods ? "Mexican" : "Liqueurs"}
         </button>
 
         <button

@@ -64,10 +64,14 @@ export default function Fooditems() {
         <span id="drawer" onClick={handleDrawer}>
           <FontAwesomeIcon fontSize="26px" icon={faListAlt} />
         </span>
+
         <span className="search_">
           <SearchBoxx />
         </span>
-        <h3>Sip and Bites </h3>
+
+        <span>
+          <h3>Sips and Bites </h3>
+        </span>
       </div>
 
       <div className="row g-1 ">

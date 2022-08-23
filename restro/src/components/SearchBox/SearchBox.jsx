@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { asyncSearchFoodItems } from "../../Redux/actions/foodActions";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  asyncSearchFoodItems,
+  asyncSearchDrinkItems,
+} from "../../Redux/actions/foodActions";
 
 export default function SearchBoxx() {
-  const [search, setSearch] = useState("");
   const dispatch = useDispatch();
+  const [search, setSearch] = useState("");
+  const foods = useSelector((state) => state.changeReducer);
 
   const handleChange = (e) => {
     console.log(e.target.value);
@@ -12,7 +16,9 @@ export default function SearchBoxx() {
   };
 
   useEffect(() => {
-    dispatch(asyncSearchFoodItems(search));
+    foods
+      ? dispatch(asyncSearchFoodItems(search))
+      : dispatch(asyncSearchDrinkItems(search));
   }, [search]);
 
   return (
