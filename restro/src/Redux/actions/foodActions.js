@@ -17,6 +17,23 @@ export const asyncGetFoodItems = (category = "Indian") => {
   };
 };
 
+export const asyncSearchFoodItems = (val) => {
+  return async (dispatch) => {
+    const res = await axios.get(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${val}`
+    );
+
+    if (res.status === 200) {
+      const newData = res.data.meals.map((item) => {
+        return { ...item, price: Math.floor(Math.random() * 500) };
+      });
+      dispatch(Success(newData));
+    } else {
+      dispatch(Fail(res.data));
+    }
+  };
+};
+
 const Success = (response) => {
   return {
     type: "GETFOOD",

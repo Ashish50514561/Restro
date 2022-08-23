@@ -14,9 +14,19 @@ export default function Categories(props) {
     navigate(`/cart`);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
+
   const handleCategory = (e) => {
     dispatch(asyncGetFoodItems(e.target.name));
     handleDrawer();
+  };
+
+  const loginBtnStyles = {
+    backgroundColor: "#e8e9ee",
+    marginTop: "10px",
+    color: "#0d6efd",
   };
   return (
     <div className="categories">
@@ -24,45 +34,76 @@ export default function Categories(props) {
       <span id="drawerCart" onClick={handleCart}>
         <FontAwesomeIcon fontSize="20px" icon={faFaceSmile} />
       </span>
-      <div
+      {/* <div
         onClick={handleCategory}
-        class="btn-group-vertical"
+        class="btn-group-vertical "
         style={{ width: "80%" }}
       >
-        <button onClick={handleCategory} class="btn" name="Indian">
+        <button onClick={handleCategory} class="btn categories_" name="Indian">
           Indian
         </button>
-        <button onClick={handleCategory} class="btn" name="French">
+
+        <button onClick={handleCategory} class="btn categories_" name="French">
           French
         </button>
 
-        <button onClick={handleCategory} class="btn" name="Chinese">
-          Chinese
+        <button onClick={handleCategory} class="btn categories_" name="British">
+          British
         </button>
-        <button onClick={handleCategory} class="btn" name="Italian">
+
+        <button onClick={handleCategory} class="btn categories_" name="Italian">
           Italian
         </button>
-        <button onClick={handleCategory} class="btn" name="Indian">
-          Indian
-        </button>
 
-        <button onClick={handleCategory} class="btn" name="Mexican">
-          Mexican
-        </button>
-        <button onClick={handleCategory} class="btn" name="Turkish">
+        <button onClick={handleCategory} class="btn categories_" name="Turkish">
           Turkish
         </button>
-        <button onClick={handleCategory} class="btn" name="Mexican">
+
+        <button onClick={handleCategory} class="btn categories_" name="Chinese">
+          Chinese
+        </button>
+
+        <button onClick={handleCategory} class="btn categories_" name="Mexican">
           Mexican
         </button>
 
-        <button onClick={handleCategory} class="btn" name="Canadian">
+        <button
+          onClick={handleCategory}
+          class="btn categories_"
+          name="Japanese"
+        >
+          Japanese
+        </button>
+
+        <button
+          onClick={handleCategory}
+          class="btn categories_"
+          name="Canadian"
+        >
           Canadian
         </button>
-        <button onClick={handleCategory} class="btn" name="American">
+        <button
+          onClick={handleCategory}
+          class="btn categories_"
+          name="American"
+        >
           American
         </button>
-      </div>
+      </div> */}
+
+      {localStorage.getItem("token") ? (
+        <Link to="/login">
+          <button style={loginBtnStyles} onClick={handleLogout} class="btn">
+            | logout |
+          </button>
+        </Link>
+      ) : (
+        <Link to="/login">
+          <button style={loginBtnStyles} onClick={handleLogout} class="btn">
+            | login |
+          </button>
+        </Link>
+      )}
     </div>
   );
 }

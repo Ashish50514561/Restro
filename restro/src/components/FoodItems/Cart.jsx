@@ -9,16 +9,7 @@ export default function Cart(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartReducer);
-
-  const handleOrder = () => {
-    dispatch(asyncDeleteCart());
-    swal({
-      title: "Order Placed!",
-      text: "Thank you!",
-      icon: "success",
-      button: "continue shopping!",
-    });
-  };
+  const flexStyles = { display: "flex", justifyContent: "center" };
 
   const totalBill =
     cart.length > 0 &&
@@ -26,10 +17,28 @@ export default function Cart(props) {
       .map((item) => item.price * item.quantity)
       .reduce((acc, ele) => acc + ele);
 
-  const flexStyles = { display: "flex", justifyContent: "center" };
+  const handleOrder = () => {
+    if (localStorage.getItem("token")) {
+      dispatch(asyncDeleteCart());
+      swal({
+        title: "Order Placed!",
+        text: "Thank you!",
+        icon: "success",
+        button: "continue shopping!",
+      });
+    } else {
+      swal({
+        title: "You need to login",
+        icon: "warning",
+        button: "Ok!",
+      });
+    }
+  };
 
   useEffect(() => {
-    dispatch(asyncGetCart());
+    if (localStorage.getItem("token")) {
+      dispatch(asyncGetCart());
+    }
   }, []);
 
   return (

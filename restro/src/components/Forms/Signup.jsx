@@ -42,7 +42,7 @@ export default function Signup() {
 
   const handleUserLoginError = () => {
     if (user.hasOwnProperty("success")) {
-      navigate("/");
+      navigate("/login");
     } else if (user.hasOwnProperty("error")) {
       setError("server busy try again ");
     }
@@ -103,7 +103,7 @@ export default function Signup() {
 
         <h7 className="mt-4">
           Already Registered ?
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/login" style={{ textDecoration: "none" }}>
             <span style={{ color: "#52a7ef" }}> login</span>
           </Link>
         </h7>

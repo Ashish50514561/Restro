@@ -13,26 +13,34 @@ export default function Card(props) {
   const cart = useSelector((state) => state.cartReducer);
 
   const addToCart = () => {
-    const present = cart.find((item) => item.mealId === idMeal);
-    if (!present) {
-      const item = {
-        name: strMeal,
-        price: price,
-        mealId: idMeal,
-        image: strMealThumb,
-      };
-      dispatch(asyncAddToCart(item));
-      swal({
-        title: "Added to cart!",
-        text: "Thank you!",
-        icon: "success",
-        button: "continue shopping!",
-      });
+    if (localStorage.getItem("token")) {
+      const present = cart.find((item) => item.mealId === idMeal);
+      if (!present) {
+        const item = {
+          name: strMeal,
+          price: price,
+          mealId: idMeal,
+          image: strMealThumb,
+        };
+        dispatch(asyncAddToCart(item));
+        swal({
+          title: "Added to cart!",
+          text: "Thank you!",
+          icon: "success",
+          button: "continue shopping!",
+        });
+      } else {
+        swal({
+          title: "Item is already in cart!",
+          icon: "warning",
+          button: "Add other item!",
+        });
+      }
     } else {
       swal({
-        title: "Item is already in cart!",
+        title: "You need to login",
         icon: "warning",
-        button: "Add other item!",
+        button: "Ok!",
       });
     }
   };
@@ -47,7 +55,7 @@ export default function Card(props) {
             <span style={{ fontWeight: "500" }}>Price - </span>${price}
           </span>
 
-          <p class="card-text">Some quick </p>
+          <p class="card-text">Some info </p>
         </div>
 
         <div class="card-body">

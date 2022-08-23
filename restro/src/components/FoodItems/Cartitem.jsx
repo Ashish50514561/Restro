@@ -1,4 +1,5 @@
 import React from "react";
+import swal from "sweetalert";
 import { useDispatch } from "react-redux";
 import {
   asyncDecreaseQuantity,
@@ -11,17 +12,40 @@ export default function Cartitem(props) {
   const dispatch = useDispatch();
 
   const decreaseQuantity = () => {
-    dispatch(asyncIncreaseQuantity(_id));
+    if (localStorage.getItem("token")) {
+      dispatch(asyncIncreaseQuantity(_id));
+    } else {
+      swal({
+        title: "You need to login",
+        icon: "warning",
+        button: "Ok!",
+      });
+    }
   };
 
   const increaseQuantity = () => {
-    dispatch(asyncDecreaseQuantity(_id));
+    if (localStorage.getItem("token")) {
+      dispatch(asyncDecreaseQuantity(_id));
+    } else {
+      swal({
+        title: "You need to login",
+        icon: "warning",
+        button: "Ok!",
+      });
+    }
   };
 
   const handleRemove = () => {
-    dispatch(asyncDeleteItem(_id));
+    if (localStorage.getItem("token")) {
+      dispatch(asyncDeleteItem(_id));
+    } else {
+      swal({
+        title: "You need to login",
+        icon: "warning",
+        button: "Ok!",
+      });
+    }
   };
-
   return (
     <div class="card mb-3" style={{ maxWidth: "540px" }}>
       <div class="row g-0">

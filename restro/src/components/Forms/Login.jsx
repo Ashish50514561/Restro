@@ -36,9 +36,8 @@ export default function Login() {
   };
 
   const handleUserLoginError = () => {
-    if (user.hasOwnProperty("successToken")) {
-      localStorage.setItem("token", user.successToken);
-      navigate("/food");
+    if (localStorage.getItem("token")) {
+      navigate("/");
     } else if (user.hasOwnProperty("error")) {
       setError("Invalid email or password");
     }

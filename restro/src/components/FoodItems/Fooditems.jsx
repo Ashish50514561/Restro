@@ -9,6 +9,7 @@ import { faListAlt } from "@fortawesome/free-regular-svg-icons";
 import { asyncDeleteCart } from "../../Redux/actions/cartActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { asyncGetFoodItems } from "../../Redux/actions/foodActions";
+import SearchBoxx from "../SearchBox/SearchBox";
 
 export default function Fooditems() {
   const dispatch = useDispatch();
@@ -18,13 +19,21 @@ export default function Fooditems() {
   const cart = useSelector((state) => state.cartReducer);
 
   const handleOrder = () => {
-    dispatch(asyncDeleteCart());
-    swal({
-      title: "Order Placed!",
-      text: "Thank you!",
-      icon: "success",
-      button: "continue shopping!",
-    });
+    if (localStorage.getItem("token")) {
+      dispatch(asyncDeleteCart());
+      swal({
+        title: "Order Placed!",
+        text: "Thank you!",
+        icon: "success",
+        button: "continue shopping!",
+      });
+    } else {
+      swal({
+        title: "You need to login",
+        icon: "warning",
+        button: "Ok!",
+      });
+    }
   };
 
   const handleDrawer = () => {
@@ -50,11 +59,14 @@ export default function Fooditems() {
     <div id="main_container">
       <Sidedrawer drawer={drawer} handleDrawer={handleDrawer} />
 
-      <div class="col-sm main_heading">
+      <div class="col-sm main_heading" style={{ position: "relative" }}>
         <span id="drawer" onClick={handleDrawer}>
           <FontAwesomeIcon fontSize="26px" icon={faListAlt} />
         </span>
-        <h3>Ashu food corner </h3>
+        <span className="search_">
+          <SearchBoxx />
+        </span>
+        <h3>Sip and Bites </h3>
       </div>
 
       <div className="row g-1 ">

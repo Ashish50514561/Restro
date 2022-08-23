@@ -8,9 +8,9 @@ import Fooditems from "../components/FoodItems/Fooditems";
 export default function routes() {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route exact path="/login" element={<Login />} />
       <Route exact path="/signup" element={<Signup />} />
-      <Route exact path="/food" element={<Fooditems />} />
+      <Route exact path="/" element={<Fooditems />} />
       <Route exact path="/cart" element={<Cart />} />
     </Routes>
   );
