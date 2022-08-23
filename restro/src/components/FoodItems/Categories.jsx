@@ -1,14 +1,20 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { faFaceSmile } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { asyncGetFoodItems } from "../../Redux/actions/foodActions";
+import {
+  asyncGetFoodItems,
+  asyncGetDrinkItems,
+} from "../../Redux/actions/foodActions";
+import { asyncChangeCategory } from "../../Redux/actions/DrinkActions";
 
 export default function Categories(props) {
   const navigate = useNavigate();
-  const { handleDrawer, totalBill } = props;
   const dispatch = useDispatch();
+  const { handleDrawer, totalBill } = props;
+  const foods = useSelector((state) => state.changeReducer);
+  console.log(foods);
 
   const handleCart = () => {
     navigate(`/cart`);
@@ -19,8 +25,20 @@ export default function Categories(props) {
   };
 
   const handleCategory = (e) => {
-    dispatch(asyncGetFoodItems(e.target.name));
+    foods
+      ? dispatch(asyncGetFoodItems(e.target.name))
+      : dispatch(asyncGetDrinkItems(e.target.name));
     handleDrawer();
+  };
+
+  const handleFoods = () => {
+    dispatch(asyncChangeCategory(true));
+    dispatch(asyncGetFoodItems());
+  };
+
+  const handleDrinks = () => {
+    dispatch(asyncChangeCategory(false));
+    dispatch(asyncGetDrinkItems());
   };
 
   const loginBtnStyles = {
@@ -31,65 +49,112 @@ export default function Categories(props) {
   return (
     <div className="categories">
       <h5 style={{ marginBottom: "30px" }}>Categories </h5>
+
       <span id="drawerCart" onClick={handleCart}>
         <FontAwesomeIcon fontSize="20px" icon={faFaceSmile} />
       </span>
-      {/* <div
+
+      <div class="btn-group" style={{ width: "80%" }}>
+        <button
+          class="btn categories_ item_categ"
+          name="Ordinary Drink"
+          onClick={handleFoods}
+        >
+          Foods
+        </button>
+        <button
+          class="btn categories_ item_categ"
+          name="Ordinary Drink"
+          onClick={handleDrinks}
+        >
+          Drinks
+        </button>
+      </div>
+
+      <div
         onClick={handleCategory}
         class="btn-group-vertical "
-        style={{ width: "80%" }}
+        style={{ width: "80%", paddingTop: "10px" }}
       >
-        <button onClick={handleCategory} class="btn categories_" name="Indian">
-          Indian
-        </button>
-
-        <button onClick={handleCategory} class="btn categories_" name="French">
-          French
-        </button>
-
-        <button onClick={handleCategory} class="btn categories_" name="British">
-          British
-        </button>
-
-        <button onClick={handleCategory} class="btn categories_" name="Italian">
-          Italian
-        </button>
-
-        <button onClick={handleCategory} class="btn categories_" name="Turkish">
-          Turkish
-        </button>
-
-        <button onClick={handleCategory} class="btn categories_" name="Chinese">
-          Chinese
-        </button>
-
-        <button onClick={handleCategory} class="btn categories_" name="Mexican">
-          Mexican
+        <button
+          onClick={handleCategory}
+          class="btn categories_"
+          name={foods ? "Indian" : "Ordinary Drink"}
+        >
+          {foods ? "Indian" : "Drinks"}
         </button>
 
         <button
           onClick={handleCategory}
           class="btn categories_"
-          name="Japanese"
+          name={foods ? "French" : "Shot"}
         >
-          Japanese
+          {foods ? "French" : "Shots"}
         </button>
 
         <button
           onClick={handleCategory}
           class="btn categories_"
-          name="Canadian"
+          name={foods ? "British" : "Beer"}
         >
-          Canadian
+          {foods ? "British" : "Beers"}
+        </button>
+
+        <button
+          onClick={handleCategory}
+          class="btn categories_"
+          name={foods ? "Italian" : "Shake"}
+        >
+          {foods ? "Italian" : "Shakes"}
+        </button>
+
+        <button
+          onClick={handleCategory}
+          class="btn categories_"
+          name={foods ? "Turkish" : "Cocoa"}
+        >
+          {foods ? "Turkish" : "Cocoas"}
+        </button>
+
+        <button
+          onClick={handleCategory}
+          class="btn categories_"
+          name={foods ? "Chinese" : "Cocktail"}
+        >
+          {foods ? "Chinese" : "Cocktail"}
+        </button>
+
+        <button
+          onClick={handleCategory}
+          class="btn categories_"
+          name={foods ? "Mexican" : "Homemade Liqueur"}
+        >
+          {foods ? "Mexican" : "Liqueur"}
+        </button>
+
+        <button
+          onClick={handleCategory}
+          class="btn categories_"
+          name={foods ? "Japanese" : "Coffee / Tea"}
+        >
+          {foods ? "Japanese" : "Beverages"}
+        </button>
+
+        <button
+          onClick={handleCategory}
+          class="btn categories_"
+          name={foods ? "Canadian" : "Soft Drink"}
+        >
+          {foods ? "Canadian" : "Soft Drink"}
         </button>
         <button
           onClick={handleCategory}
           class="btn categories_"
-          name="American"
+          name={foods ? "American" : "Punch / Party Drink"}
         >
-          American
+          {foods ? "American" : "Party Drink"}
         </button>
-      </div> */}
+      </div>
 
       {localStorage.getItem("token") ? (
         <Link to="/login">

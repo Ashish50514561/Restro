@@ -52,3 +52,16 @@ export const drawerReducer = (state = drawerInitialState, action) => {
     }
   }
 };
+
+const ChangeInitialState = true;
+
+export const changeReducer = (state = ChangeInitialState, action) => {
+  switch (action.type) {
+    case "CHANGE": {
+      return action.payload;
+    }
+    default: {
+      return state;
+    }
+  }
+};

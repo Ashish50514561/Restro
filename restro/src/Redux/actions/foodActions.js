@@ -7,9 +7,28 @@ export const asyncGetFoodItems = (category = "Indian") => {
     );
 
     if (res.status === 200) {
-      const newData = res.data.meals.map((item) => {
+      const newData = res.data.meals.slice(0, 15).map((item) => {
         return { ...item, price: Math.floor(Math.random() * 500) };
       });
+      dispatch(Success(newData));
+    } else {
+      dispatch(Fail(res.data));
+    }
+  };
+};
+
+export const asyncGetDrinkItems = (category = "Shake") => {
+  return async (dispatch) => {
+    console.log({ category });
+    const res = await axios.get(
+      `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`
+    );
+    console.log(res);
+    if (res.status === 200) {
+      const newData = res.data.drinks.slice(0, 15).map((item) => {
+        return { ...item, price: Math.floor(Math.random() * 500) };
+      });
+      console.log({ newData });
       dispatch(Success(newData));
     } else {
       dispatch(Fail(res.data));

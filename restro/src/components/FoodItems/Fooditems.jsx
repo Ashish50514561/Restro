@@ -17,6 +17,7 @@ export default function Fooditems() {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const foodItems = useSelector((state) => state.foodReducer);
   const cart = useSelector((state) => state.cartReducer);
+  console.log({ foodItems });
 
   const handleOrder = () => {
     if (localStorage.getItem("token")) {

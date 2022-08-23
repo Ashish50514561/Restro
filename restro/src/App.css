@@ -176,6 +176,9 @@ input {
   background-color: #eff0f4;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
+.item_categ {
+  background-color: #dfe2e9 !important;
+}
 
 @media (max-width: 576px) {
   .search input {
